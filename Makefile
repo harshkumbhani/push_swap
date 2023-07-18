@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/17 16:22:31 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/18 09:53:54 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,14 +33,14 @@ NOVISU 	= 0
 OBJDIR = objs
 FILE_EXTENSION = .c
 
-VPATH = ./parse
+VPATH = .:./parse
 SRC_PARSE = parse.c 
 
 ################################################################################
 #                                  Makefile  objs                              #
 ################################################################################
 
-SRCS = $(SRC_PARSE)
+SRCS = $(SRC_PARSE) push_swap.c
 OBJS = $(addprefix objs/, ${SRCS:%$(FILE_EXTENSION)=%.o})
 
 ################################################################################
@@ -105,11 +105,11 @@ header:
 	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| v2"
 	@echo
 
-ifneq ($(HASH),)
-	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)@$(HASH)\n"
-else
+#ifneq ($(HASH),)
+#	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)@$(HASH)\n"
+#else
 	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)\n"
-endif
+#endif
 	@printf "%b" "$(OBJ_COLOR)Author:$(WARN_COLOR)$(AUTHOR)\n"
 	@printf "%b" "$(OBJ_COLOR)Date:  $(WARN_COLOR)$(DATE)\n"
 	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CC)\n"
@@ -117,10 +117,10 @@ endif
 	@echo
 
 $(NAME): $(OBJS) $(LIBFT)
-	@echo "Compiling $@"
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@
+	@echo "$(COM_COLOR)Compiling $@$(NO_COLOR)"
+	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@
 
-objs/%.o: $(SRCS)
+objs/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(call run_and_test,$(CC) $(CFLAGS) -c $< -o $@)
 

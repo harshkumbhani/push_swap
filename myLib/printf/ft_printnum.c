@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printnum.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkumbhan <hkumbhan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:39:48 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/05/02 17:22:07 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/18 10:05:49 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /// @brief Prints number on the terminal, similat to ITOA()
 /// @param n The number to be printed
-int	ft_putnbr(long n)
+int	ft_putnbr_printf(long n)
 {
 	int		len;
 
@@ -38,7 +38,7 @@ int	ft_putnbr(long n)
 	return (len);
 }
 
-int	ft_puthex(size_t n, char *base)
+int	ft_puthex_printf(size_t n, char *base)
 {
 	int	len;
 
@@ -53,7 +53,7 @@ int	ft_puthex(size_t n, char *base)
 	return (len);
 }
 
-int	ft_putptr(size_t n)
+int	ft_putptr_printf(size_t n)
 {
 	char	*base;
 	int		len;
