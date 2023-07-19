@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:48:28 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/10 09:14:42 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:42:35 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ char	*ft_read_file(int fd, char *stash)
 	int		ret;
 
 	ret = 1;
-	while (ret > 0 && !ft_strchr(stash, '\n'))
+	while (ret > 0 && !ft_strchr_gnl(stash, '\n'))
 	{
 		ret = read(fd, buffer, BUFFER_SIZE);
 		if (ret < 0)
 			return (free(stash), ALLOC_FAIL);
 		buffer[ret] = '\0';
-		stash = ft_strjoin(stash, buffer);
+		stash = ft_strjoin_gnl(stash, buffer);
 	}
 	return (stash);
 }
@@ -91,7 +91,7 @@ char	*ft_update_stash(char *stash)
 		i++;
 	if (stash[i] == '\0')
 		return (free(stash), ALLOC_FAIL);
-	res = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
+	res = malloc(sizeof(char) * (ft_strlen_gnl(stash) - i + 1));
 	if (res == ALLOC_FAIL)
 		return (free(stash), ALLOC_FAIL);
 	i++;

@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/18 09:53:54 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/18 12:07:20 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@
 
 NAME 	= push_swap
 CC		= cc
-CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./header
-HEADERS = -I./header -I./include
+CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./include -I./myLib/header
+HEADERS = -I./myLib/header -I./include
 DEPS = ./header/push_swap_h
 LIBFT_DIR = ./myLib
 LIBFT = ./myLib/libft.a
@@ -118,11 +118,12 @@ header:
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(COM_COLOR)Compiling $@$(NO_COLOR)"
-	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@
+#	@$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
 
 objs/%.o: %.c
 	@mkdir -p $(dir $@)
-	@$(call run_and_test,$(CC) $(CFLAGS) -c $< -o $@)
+	@$(call run_and_test,$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ )
 
 clean: header
 	@echo

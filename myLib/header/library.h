@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   library.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 11:39:45 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/18 10:07:15 by hkumbhan         ###   ########.fr       */
+/*   Created: 2023/03/30 19:36:18 by hkumbhan          #+#    #+#             */
+/*   Updated: 2023/07/18 12:02:13 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-# include <unistd.h>
-# include <stdarg.h>
-
-int	ft_printf(const char *format, ...);
-int	ft_formattype(char c, va_list ap, int *i);
-int	ft_putchar_printf(char c);
-int	ft_strlen_printf(char *s);
-int	ft_putstr_printf(char *s);
-int	ft_putnbr_printf(long n);
-int	ft_putptr_printf(size_t n);
-int	ft_puthex_printf(size_t n, char *base);
+# include "../gnl/get_next_line.h"
+# include "../printf/ft_printf.h"
+# include "../libft/libft.h"
 
 #endif

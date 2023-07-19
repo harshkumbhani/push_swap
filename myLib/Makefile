@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 11:34:52 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/11 13:40:56 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/18 12:41:12 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,7 +127,7 @@ $(NAME): $(OBJS)
 	@echo
 	@ar rcs $@ $^
 
-objs/%.o: $(SRCS)
+$(OBJDIR)/%.o: %$(FILE_EXTENSION)
 	@mkdir -p $(dir $@)
 	@$(call run_and_test,$(CC) $(CFLAGS) -c $< -o $@)
 

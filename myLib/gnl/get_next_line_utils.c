@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 17:37:11 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/10 09:57:34 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:42:12 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
-	result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	result = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (result == ALLOC_FAIL)
 		return (ALLOC_FAIL);
-	ft_memcpy(result, s1, ft_strlen(s1));
-	ft_memcpy(result + ft_strlen(s1), s2, ft_strlen(s2));
-	result[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	ft_memcpy_gnl(result, s1, ft_strlen_gnl(s1));
+	ft_memcpy_gnl(result + ft_strlen_gnl(s1), s2, ft_strlen_gnl(s2));
+	result[ft_strlen_gnl(s1) + ft_strlen_gnl(s2)] = '\0';
 	free(s1);
 	return (result);
 }

@@ -1,3 +1,4 @@
 objs/
 *.o
 *.log
+push_swap

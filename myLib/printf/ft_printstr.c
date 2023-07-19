@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:39:52 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/18 10:05:21 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:47:01 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	ft_putstr_printf(char *s)
 	len = 0;
 	if (s == NULL)
 		s = "(null)";
-	if (write(1, s, ft_strlen(s)) < 0)
+	if (write(1, s, ft_strlen_printf(s)) < 0)
 		return (-1);
-	len += ft_strlen(s);
+	len += ft_strlen_printf(s);
 	return (len);
 }

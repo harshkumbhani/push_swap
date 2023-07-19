@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:39:41 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/06/25 20:45:28 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:46:04 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ int	ft_formattype(char c, va_list ap, int *len)
 
 	temp_len = 0;
 	if (c == 'c')
-		temp_len = ft_putchar(va_arg(ap, int));
+		temp_len = ft_putchar_printf(va_arg(ap, int));
 	else if (c == 's')
-		temp_len = ft_putstr(va_arg(ap, char *));
+		temp_len = ft_putstr_printf(va_arg(ap, char *));
 	else if (c == 'd' || c == 'i')
-		temp_len = ft_putnbr((long)va_arg(ap, int));
+		temp_len = ft_putnbr_printf((long)va_arg(ap, int));
 	else if (c == 'u')
-		temp_len = ft_putnbr(va_arg(ap, unsigned int));
+		temp_len = ft_putnbr_printf(va_arg(ap, unsigned int));
 	else if (c == 'x')
-		temp_len = ft_puthex(va_arg(ap, unsigned int), "0123456789abcdef");
+		temp_len = ft_puthex_printf(va_arg(ap, unsigned int), HEX_S);
 	else if (c == 'X')
-		temp_len = ft_puthex(va_arg(ap, unsigned int), "0123456789ABCDEF");
+		temp_len = ft_puthex_printf(va_arg(ap, unsigned int), HEX_C);
 	else if (c == 'p')
-		temp_len = ft_putptr((size_t)va_arg(ap, void *));
+		temp_len = ft_putptr_printf((size_t)va_arg(ap, void *));
 	else if (c == '%')
-		temp_len = ft_putchar('%');
+		temp_len = ft_putchar_printf('%');
 	if (temp_len < 0)
 		return (-1);
 	*len += temp_len;
@@ -57,7 +57,7 @@ int	ft_printf(const char *format, ...)
 		}
 		else
 		{
-			if (ft_putchar(*str) < 0)
+			if (ft_putchar_printf(*str) < 0)
 				return (-1);
 			len++;
 		}
