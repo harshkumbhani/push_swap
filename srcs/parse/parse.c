@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/18 15:34:40 by hkumbhan         ###   ########.fr       */
+/*   Created: 2023/07/17 15:19:12 by hkumbhan          #+#    #+#             */
+/*   Updated: 2023/07/19 10:22:59 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
-int	ft_printf(const char *format, ...);
+//void	parse(int ac, char **av)
+//{
+//	int	i;
 
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	i = 0;
-	(void)argv;
-	if (argc < 2)
-		return (EXIT_FAILURE);
-	parse();
-	ft_printf("Invalid number of Arguments\n");
-	return (0);
-}
+//	i = 0;
+//	while (++i < ac)
+//	{
+//		if (!ft_number(av[i]))
+//			return ;
+//	}
+//}

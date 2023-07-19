@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 15:19:12 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/18 15:51:26 by hkumbhan         ###   ########.fr       */
+/*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
+/*   Updated: 2023/07/19 12:26:18 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	parse(int ac, char **av)
+
+
+int	main(int argc, char **argv)
 {
 	int	i;
 
 	i = 0;
-	while (++i < ac)
-	{
-		if (!ft_number(av[i]))
-			return ;
-	}
-}
-
-size_t	ft_number(char	*av)
-{
-	int	i;
-
-	i = 0;
-	while ()
+	(void)argv;
+	if (argc < 2)
+		return (EXIT_FAILURE);
+	ft_print(argc, argv);
+	return (0);
 }

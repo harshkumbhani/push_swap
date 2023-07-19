@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/18 12:00:01 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/19 10:55:09 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdio.h>
+# include <stdbool.h>
 
 # define FALSE 0
 # define TRUE  1
 
 // Libft library headers
 
-# include "myLib/header/library.h"
+# include "../srcs/myLib/header/library.h"
 
 // Struct for circular doubly linked list
 
 typedef	struct s_cdlist
 {
-	int				index;
 	int				data;
+	int				index;
 	struct s_cdlist	*prev;
 	struct s_cdlist	*next;
 }	t_cdlist;
@@ -39,6 +40,8 @@ typedef	struct s_stack
 {
 	t_cdlist	*a;
 	t_cdlist	*b;
-} stack;
+}	t_stack;
 
+t_cdlist	*new_node(int data);
+t_cdlist	*add_back(t_cdlist **head, int data);
 #endif
