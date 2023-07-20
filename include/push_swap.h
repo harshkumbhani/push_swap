@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/19 10:55:09 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/20 10:51:01 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ typedef	struct s_stack
 
 t_cdlist	*new_node(int data);
 t_cdlist	*add_back(t_cdlist **head, int data);
+void		ft_freearr(char	**arr);
+
 #endif

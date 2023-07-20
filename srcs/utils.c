@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/17 15:19:12 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/20 10:29:34 by hkumbhan         ###   ########.fr       */
+/*   Created: 2023/07/20 09:46:27 by hkumbhan          #+#    #+#             */
+/*   Updated: 2023/07/20 09:52:18 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/push_swap.h"
+#include "../include/push_swap.h"
 
-//void	parse(int ac, char **av)
-//{
-//	int	i;
+void	ft_freearr(char	**arr)
+{
+	int	i;
 
-//	i = 0;
-//	while (++i < ac)
-//	{
-//		if (!ft_number(av[i]))
-//			return ;
-//	}
-//}
+	i = 0;
+	while (arr[i])
+		i++;
+	while (--i)
+	{
+		free(arr[i]);
+		arr[i] = NULL;
+	}
+	free(arr);
+	arr = NULL;
+}

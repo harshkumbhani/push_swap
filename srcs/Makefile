@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/19 10:51:46 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/20 11:46:45 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@
 
 NAME 	= push_swap
 CC		= cc
-CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./../include -I./../myLib/header
-HEADERS = -I./../myLib/header -I./../include
+CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./include -I./srcs/myLib/header
+HEADERS = -I./include -I./srcs/myLib/header
 DEPS = ./header/push_swap_h
 LIBFT_DIR = ./myLib
 LIBFT = ./myLib/libft.a
@@ -41,7 +41,7 @@ SRC_LISTFN = ft_create.c
 #                                  Makefile  objs                              #
 ################################################################################
 
-SRCS = $(SRC_PARSE) $(SRC_LISTFN) push_swap.c
+SRCS = $(SRC_PARSE) $(SRC_LISTFN) push_swap.c utils.c 
 OBJS = $(addprefix objs/, ${SRCS:%$(FILE_EXTENSION)=%.o})
 
 ################################################################################
@@ -119,7 +119,7 @@ header:
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
+	$(CC) $(CFLAGS) $(OBJS) -lft -L./myLib -o $@
 
 objs/%.o: %.c
 	@mkdir -p $(dir $@)
