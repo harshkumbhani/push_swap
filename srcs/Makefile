@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/20 11:46:45 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/21 10:33:54 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 NAME 	= push_swap
 CC		= cc
-CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./include -I./srcs/myLib/header
+CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./include -I./srcs/myLib/header -g
 HEADERS = -I./include -I./srcs/myLib/header
 DEPS = ./header/push_swap_h
 LIBFT_DIR = ./myLib
@@ -119,7 +119,19 @@ header:
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
-	$(CC) $(CFLAGS) $(OBJS) -lft -L./myLib -o $@
+	@$(CC) $(CFLAGS) -g $(OBJS) -lft -L./myLib -o $@
+	@$(CC) $(CFLAGS) -g $(OBJS) -lft -L./myLib -o program 
+#	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
+
+$(LIBFT):
+	@make re -C $(LIBFT_DIR) > make_output.txt 2>&1; \
+	if [ $$? -eq 0 ]; then \
+		echo "$(OK_COLOR)LIBFT.A compilation successful.$(NO_COLOR)"; \
+	else \
+		echo "$(ERROR_COLOR)LIBFT.A compilation failed.$(NO_COLOR) Check make_output.txt for details."; \
+		exit 1; \
+	fi
+
 
 objs/%.o: %.c
 	@mkdir -p $(dir $@)
@@ -143,4 +155,4 @@ norm: $(SRCS)
 	 	
 re: fclean all
 
-.PHONY: all clean fclean re header
+.PHONY: all clean fclean re header $(LIBFT)

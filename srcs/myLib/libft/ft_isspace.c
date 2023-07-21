@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/20 09:46:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/21 14:40:40 by hkumbhan         ###   ########.fr       */
+/*   Created: 2023/07/21 09:45:05 by hkumbhan          #+#    #+#             */
+/*   Updated: 2023/07/21 09:56:07 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "libft.h"
 
-void	ft_freearr(char	**arr)
+int	ft_isspace(int c)
 {
-	char	**tmp;
-
-	tmp = arr;
-	while (*tmp)
-	{
-		free(*tmp);
-		tmp++;
-	}
-	free(arr);
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (1);
+	return (0);
 }

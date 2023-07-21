@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 19:36:18 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/12 09:15:45 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/21 10:00:01 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef struct s_list
 	struct s_list		*next;
 }						t_list;
 
-
 // Character Classification Functions
 
 int		ft_isalpha(int c);
@@ -34,7 +33,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-
+int		ft_isspace(int c);
 
 //  Memory Functions
 
@@ -45,7 +44,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_calloc(size_t count, size_t size);
-
 
 // String Functions
 
@@ -64,12 +62,10 @@ char	*ft_itoa(int n);
 char	**ft_split(const char *s, char c);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 
-
 //  Conversion Functions
 
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);
-
 
 //  Output Functions
 
@@ -77,7 +73,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-
 
 // Linked List Functions
 
