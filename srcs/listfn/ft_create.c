@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:04:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/21 17:43:44 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/22 08:03:56 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	add_back(t_cdlist **head, int data)
 		new->next = new;
 		*head = new;
 	}
-	else 
+	else
 	{
 		while (current->next != (*head))
 			current = current->next;
