@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 09:46:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/22 09:05:14 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/23 13:15:40 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,19 @@ void	ft_freelist(t_cdlist **head)
 	}
 	free(next);
 	return ;
+}
+
+void	ft_printf_list(t_cdlist **head)
+{
+	t_cdlist	*tmp;
+	int			i;
+
+	i = 1;
+	tmp = (*head);
+	while (tmp->next != (*head))
+	{
+		ft_printf("Node %d: %d\n", i++ , tmp->data);
+		tmp = tmp->next;
+	}
+	ft_printf("Node %d: %d\n", i++ , tmp->data);
 }
