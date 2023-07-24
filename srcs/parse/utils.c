@@ -6,11 +6,11 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 09:46:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/24 11:28:39 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:50:00 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "../../include/push_swap.h"
 
 void	ft_freearr(char	**arr)
 {
@@ -46,21 +46,6 @@ void	ft_freelist(t_cdlist **head)
 	free(current);
 	(*head) = NULL;
 	return ;
-}
-
-void	ft_printf_list(t_cdlist **head)
-{
-	t_cdlist	*tmp;
-	int			i;
-
-	i = 1;
-	tmp = (*head);
-	while (tmp->next != (*head))
-	{
-		ft_printf("Node %d: %d\n", i++ , tmp->data);
-		tmp = tmp->next;
-	}
-	ft_printf("Node %d: %d\n", i++ , tmp->data);
 }
 
 void	ft_free(char **arr, t_stack	**stack)

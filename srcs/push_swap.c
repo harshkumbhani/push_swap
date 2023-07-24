@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/24 14:33:47 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:57:38 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	ft_printf_list(&(stack->a));
+	ft_printf("\n\nNumber of nodes : %d\n", ft_list_len(&(stack->a)));
 	ft_free(NULL, &stack);
 	return (0);
 }
