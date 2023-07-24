@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 09:46:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/23 13:15:40 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/24 11:28:39 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_freearr(char	**arr)
 	char	**tmp;
 
 	tmp = arr;
+	if (arr == NULL)
+		return ;
 	while (*tmp)
 	{
 		free(*tmp);
@@ -31,15 +33,18 @@ void	ft_freelist(t_cdlist **head)
 	t_cdlist	*next;
 
 	current = (*head);
-	next = NULL;
-	while (current->next != (*head))
+	if (!current)
+		return ;
+	next = current->next;
+	while (next != (*head))
 	{
-		next = current->next;
 		free(current);
 		current = NULL;
 		current = next;
+		next = current->next;
 	}
-	free(next);
+	free(current);
+	(*head) = NULL;
 	return ;
 }
 
@@ -56,4 +61,16 @@ void	ft_printf_list(t_cdlist **head)
 		tmp = tmp->next;
 	}
 	ft_printf("Node %d: %d\n", i++ , tmp->data);
+}
+
+void	ft_free(char **arr, t_stack	**stack)
+{
+	ft_freearr(arr);
+	if (stack && *stack)
+	{
+		if ((*stack)->a)
+			ft_freelist(&(*stack)->a);
+		free(*stack);
+		*stack = NULL;
+	}
 }

@@ -6,77 +6,191 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:19:12 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/23 13:18:26 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/24 14:49:56 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	ft_isvalidarg(char *str)
+static int	ft_isvalidarg(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		while (ft_isspace(str[i]))
+		while (str[i] && ft_isspace(str[i]))
 			i++;
+		if (str[i] == '\0')
+			return (TRUE);
 		if (str[i] == '-' || str[i] == '+')
 			i++;
-		if (!ft_isdigit(str[i]))
-			return (FALSE);	
+		if (str[i] && !ft_isdigit(str[i]))
+			return (FALSE);
 		i++;
 	}
 	return (TRUE);
 }
 
-int	ft_print(int ac, char **av)
+static int	ft_duplicate(t_cdlist **stack, int num)
 {
-	char	**tmp;
-	int		i;
-	int		j;
-	t_stack	*stack;
+	t_cdlist	*current;
 
-	i = 0;
-	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	if (!stack)
+	if (!stack || !(*stack))
+		return (TRUE);
+	current = (*stack);
+	if (current->data == num)
 		return (FALSE);
-	while (++i < ac)
+	current = current->next;
+	while (current != (*stack))
 	{
-		if (ft_isvalidarg(av[i]) == TRUE)
-		{
-			tmp = ft_split(av[i], ' ');
-			j = 0;
-			ft_printf("\nArgument %d: \n", i);
-			while (tmp[j])
-			{
-				ft_printf("Number %d: %d\n", j + 1, ft_atoi(tmp[j]));
-				add_back(&stack->a, ft_atoi(tmp[j]));
-				j++;
-			}
-			ft_printf("\n\n");
-			ft_freearr(tmp);
-		}
+		if (num == current->data)
+			return (FALSE);
+		current = current->next;
+	}
+	return (TRUE);
+}
+
+static int	ft_check(const char *str, t_cdlist **stack)
+{
+	(void)stack;
+	if (ft_atol(str) > INT_MAX || ft_atol(str) < INT_MIN)
+		return (FALSE);
+	if (ft_duplicate(stack, ft_atoi(str)) == FALSE)
+		return (FALSE);
+	return (TRUE);
+}
+
+/// @brief 
+/// @param arg 
+/// @param stack 
+/// @return 
+static int	ft_process_arg(char *arg, t_stack **stack)
+{
+	char	**arr;
+	int		j;
+
+	arr = ft_split(arg, ' ');
+	j = 0;
+	if (arr[j] == NULL)
+	{
+		ft_freearr(arr);
+		return (EXIT_SUCCESS);
+	}
+	while (arr[j])
+	{
+		if (ft_check(arr[j], &(*stack)->a) == TRUE)
+			add_back(&(*stack)->a, ft_atoi(arr[j++]));
 		else
 		{
-			if (stack->a)
-				ft_freelist(&stack->a);
-			free(stack);
+			ft_free(arr, stack);
 			return (EXIT_FAILURE);
 		}
-	}  
-	ft_printf_list(&stack->a);
-	ft_freelist(&stack->a);
-	free(stack);
+	}
+	ft_freearr(arr);
 	return (EXIT_SUCCESS);
 }
 
-int	ft_parse(int ac, char **av)
+int	ft_parse(int ac, char **av, t_stack **stack)
 {
-	if (ft_isvalidarg(av) == FALSE)
+	int	i;
+	int	exit_status;
+
+	i = 0;
+	exit_status = EXIT_FAILURE;
+	while (++i < ac)
 	{
-		ft_printf("Error\n");
-		return (FALSE);
+		if (ft_isvalidarg(av[i]) != TRUE)
+			break ;
+		if (ft_process_arg(av[i], stack) != EXIT_SUCCESS)
+			break ;
 	}
-	
+	if (i == ac)
+		exit_status = EXIT_SUCCESS;
+	if (exit_status == EXIT_FAILURE)
+		ft_free(NULL, stack);
+	return (exit_status);
 }
+//static int ft_parse_and_validate_args(int ac, char **av, t_stack **stack)
+//{
+//	int		i;
+
+//	i = 0;
+//	while (++i < ac)
+//	{
+//		if (ft_isvalidarg(av[i]) != TRUE)
+//			return (EXIT_FAILURE);
+//		if (ft_process_arg(av[i], stack) != EXIT_SUCCESS)
+//			return (EXIT_FAILURE);
+//	}
+//	return (EXIT_SUCCESS);
+//}
+
+//int	ft_parse(int ac, char **av, t_stack **stack)
+//{
+//	int exit_status;
+
+//	exit_status = ft_parse_and_validate_args(ac, av, stack);
+//	if (exit_status == EXIT_SUCCESS)
+//	{
+//		ft_printf_list(&(*stack)->a);
+//		ft_freelist(&(*stack)->a);
+//	}
+//	else
+//	{
+//		if ((*stack)->a)
+//			ft_freelist(&(*stack)->a);
+//	}
+//	free(*stack);
+//	*stack = NULL;
+//	exit(exit_status);
+//}
+
+// PSEUDO CODE
+
+//int	ft_parse(int ac, char **av, t_stack **stack)
+//{
+//	char	**arr;
+//	int		i;
+//	int		j;
+
+//	i = 0;
+//	while (++i < ac)
+//	{
+//		if (ft_isvalidarg(av[i]) == TRUE)
+//		{
+//			arr = ft_split(av[i], ' ');
+//			j = 0;
+//			if (arr[j] == NULL)
+//			{
+//				ft_freearr(arr);
+//				continue;
+//			}
+//			while (arr[j])
+//			{
+//				if (ft_check(arr[j], &(*stack)->a) == TRUE)
+//					add_back(&(*stack)->a, ft_atoi(arr[j++]));
+//				else
+//				{
+//					if (*stack == NULL)
+//						return (EXIT_FAILURE);
+//					ft_free(arr, stack);
+//					return (EXIT_FAILURE);
+//				}
+//			}
+//			ft_freearr(arr);
+//		}
+//		else
+//		{
+//			if ((*stack)->a)
+//				ft_freelist(&(*stack)->a);
+//			free(*stack);
+//			*stack = NULL;
+//			return (EXIT_FAILURE);
+//		}
+//	}
+//	ft_printf_list(&(*stack)->a);
+//	ft_freelist(&(*stack)->a);
+//	free(*stack);
+//	return (EXIT_SUCCESS);
+//}
