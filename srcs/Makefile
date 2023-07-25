@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/21 10:33:54 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/25 08:58:13 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJDIR = objs
 FILE_EXTENSION = .c
 
 VPATH = .:./parse:./listfn
-SRC_PARSE = parse.c
+SRC_PARSE = parse.c indexing.c
 SRC_LISTFN = ft_create.c
 
 ################################################################################

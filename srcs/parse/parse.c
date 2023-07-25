@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:19:12 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/24 14:49:56 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/25 08:57:24 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,10 @@ int	ft_parse(int ac, char **av, t_stack **stack)
 			break ;
 	}
 	if (i == ac)
+	{
+		ft_indexing(&(*stack)->a);
 		exit_status = EXIT_SUCCESS;
+	}
 	if (exit_status == EXIT_FAILURE)
 		ft_free(NULL, stack);
 	return (exit_status);

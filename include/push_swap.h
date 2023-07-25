@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/24 15:56:22 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/25 08:56:00 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void		ft_freearr(char	**arr);
 void		ft_freelist(t_cdlist **head);
 int			ft_parse(int ac, char **av, t_stack **stack);
 void		ft_free(char **arr, t_stack	**stack);
+void		ft_indexing(t_cdlist	**stack);
 
 #endif
