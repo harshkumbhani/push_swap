@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:04:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/24 15:54:51 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:41:44 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,4 @@ size_t	ft_list_len(t_cdlist **head)
 	}
 	return (i);
 }
+

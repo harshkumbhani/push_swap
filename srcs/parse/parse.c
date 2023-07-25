@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:19:12 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/25 08:57:24 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:44:55 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static int	ft_isvalidarg(char *str)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] && ft_isspace(str[i]))
+		while (str[i] != '\0' && ft_isspace(str[i]) == TRUE)
 			i++;
 		if (str[i] == '\0')
 			return (TRUE);
 		if (str[i] == '-' || str[i] == '+')
 			i++;
-		if (str[i] && !ft_isdigit(str[i]))
+		if (str[i] != '\0' && ft_isdigit(str[i]) == FALSE)
 			return (FALSE);
 		i++;
 	}

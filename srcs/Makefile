@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/25 08:58:13 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/25 10:32:58 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,15 +33,16 @@ NOVISU 	= 0
 OBJDIR = objs
 FILE_EXTENSION = .c
 
-VPATH = .:./parse:./listfn
+VPATH = .:./parse:./listfn:./operations
 SRC_PARSE = parse.c indexing.c
 SRC_LISTFN = ft_create.c
+SRC_OPS = swap.c rotate.c
 
 ################################################################################
 #                                  Makefile  objs                              #
 ################################################################################
 
-SRCS = $(SRC_PARSE) $(SRC_LISTFN) push_swap.c utils.c 
+SRCS = $(SRC_PARSE) $(SRC_LISTFN) $(SRC_OPS) push_swap.c utils.c 
 OBJS = $(addprefix objs/, ${SRCS:%$(FILE_EXTENSION)=%.o})
 
 ################################################################################
