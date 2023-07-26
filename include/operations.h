@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:23:40 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/26 07:52:03 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:31:19 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,25 @@ typedef enum	e_operations
 	RRR
 } t_operations;
 
-// FUNCTIONS FOR SWAPPING 
+// FUNCTIONS DEFS FOR SWAPPING 
 
-void	sa(t_stack **stack);
-void	sb(t_stack **stack);
-void	ss(t_stack **stack);
+void	swap(t_cdlist **stack);
+void	swap_both(t_stack **stack);
 
-// FUNCTIONS FOR ROTATION
+// FUNCTIONS DEFS FOR ROTATION
 
-void	ra(t_stack **stack);
-void	rb(t_stack **stack);
-void	rr(t_stack **stack);
-void	rra(t_stack **stack);
-void	rrb(t_stack **stack);
-void	rrr(t_stack **stack);
+void	rot(t_cdlist **stack);
+void	rot_both(t_stack **stack);
+void	rev_rot(t_cdlist **stack);
+void	rev_rot_both(t_stack **stack);
+
+// Functions definitions for pushing
+
+void	pa(t_stack **stack);
+void	pb(t_stack **stack);
 
 // Functions for prinitng the opearations
 
-void	print_operations(t_operations operations);
+void	do_operations(t_stack **stack, int operation);
 
 #endif

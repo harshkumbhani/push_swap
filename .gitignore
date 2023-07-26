@@ -2,3 +2,6 @@ objs/
 *.o
 *.log
 push_swap
+test/
+program
+make_output.txt
