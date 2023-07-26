@@ -6,34 +6,38 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:33:02 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/25 10:38:30 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/26 08:12:14 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/operations.h"
 
-void	ra(t_stack **stack)
+void	rotate(t_cdlist **stack)
 {
-	(*stack)->a = (*stack)->a->next;
-	ft_printf("ra\n");
+	if (stack == NULL || (*stack) == NULL)
+		return ;
+	(*stack) = (*stack)->next;
 }
 
-void	rb(t_stack **stack)
+void	rotate_both(t_stack **stack)
 {
-	(*stack)->b = (*stack)->b->next;
-	ft_printf("rb\n");
+	if (stack == NULL)
+		return ;
+	rotate(&(*stack)->a);
+	rotate(&(*stack)->b);
 }
 
-void	rr(t_stack **stack)
+void	rev_rotate(t_cdlist **stack)
 {
-	ra(stack);
-	rb(stack);
-	ft_printf("rr\n");
+	if (stack == NULL || (*stack) == NULL)
+		return ;
+	(*stack) = (*stack)->prev;
 }
 
 void	rrr(t_stack **stack)
 {
-	rra(stack);
-	rrb(stack);
-	ft_printf("rrr\n");
+	if (stack == NULL)
+		return ;
+	rev_rotate(&(*stack)->a);
+	rev_rotate(&(*stack)->b);
 }
