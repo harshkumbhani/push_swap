@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/26 07:51:13 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/26 15:23:09 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ FILE_EXTENSION = .c
 
 VPATH = .:./parse:./listfn:./operations
 SRC_PARSE = parse.c indexing.c
-SRC_LISTFN = ft_create.c
+SRC_LISTFN = ft_create.c print_list.c
 SRC_OPS = swap.c rotate.c push.c print_ops.c
 
 ################################################################################

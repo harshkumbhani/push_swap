@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:06:06 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/25 10:28:55 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:02:09 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	ft_sort(int *arr, int len)
 	}
 }
 
-void	ft_put_index(t_cdlist **stack, int *arr, int len)
+static void	ft_put_index(t_cdlist **stack, int *arr, int len)
 {
 	int			i;
 	t_cdlist	*current;
@@ -65,23 +65,6 @@ void	ft_put_index(t_cdlist **stack, int *arr, int len)
 		i++;
 	}
 }
-
-//static void	ft_print_index(t_cdlist **stack)
-//{
-//	t_cdlist	*tmp;
-//	int			i;
-
-//	i = 1;
-//	tmp = (*stack);
-//	printf("Node %d: Data: %d Index: %d\n", i , tmp->data, tmp->index);
-//	tmp = tmp->next;
-//	while (tmp != (*stack))
-//	{
-//		i++;
-//		printf("Node %d: Data: %d Index: %d\n", i , tmp->data, tmp->index);
-//		tmp = tmp->next;
-//	}
-//}
 
 void	ft_indexing(t_cdlist	**stack)
 {
@@ -106,64 +89,3 @@ void	ft_indexing(t_cdlist	**stack)
 	//ft_print_index(stack);
 	free(arr);
 }
-
-//void	ft_indexing(t_cdlist	**stack)
-//{
-//	int			arr[ft_list_len(stack)];
-//	t_cdlist	*current;
-//	int			i;
-
-//	i = -1;
-//	current = (*stack);
-//	if (!stack || !(*stack))
-//		return ;
-//	while (++i < ft_list_len(stack))
-//	{
-//		arr[i] = current->data;
-//		current = current->next;
-//	}
-//	ft_sort(&arr, ft_list_len(stack));
-//}
-
-//int	main(void)
-//{
-//	int	A[] = { 5, 7, 9, 1, 2, 87, 34};
-//	int	i = 0;
-
-//	while (i < 7)
-//	{
-//		printf("A[%d]: %d\n", i, A[i]);
-//		i++;
-//	}
-//	ft_sort(A, 0, 7);
-//	i = 0;
-//	while (i < 7)
-//	{
-//		printf("A[%d]: %d\n", i, A[i]);
-//		i++;
-//	}
-//}
-
-//static void	ft_put_index(t_cdlist **stack, int *arr, int len)
-//{
-//	int			i;
-//	t_cdlist	*current;
-
-//	current = (*stack);
-//	i = 0;
-//	while (i < len && current->data != arr[i])
-//		i++;
-//	if (i < len)
-//	{
-//		current->index = i;
-//		current = current->next;
-//	}
-//	while (i < len && current != (*stack))
-//	{
-//		if (current->data == arr[i])
-//		{
-//			current->index = i++;
-//			current = current->next;
-//		}
-//	}
-//}
