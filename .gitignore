@@ -1,7 +1,6 @@
 objs/
 *.o
 *.log
-push_swap
 test/
 srcs/program
 srcs/make_output.txt
