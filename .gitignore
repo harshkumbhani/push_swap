@@ -3,5 +3,5 @@ objs/
 *.log
 push_swap
 test/
-program
-make_output.txt
+srcs/program
+srcs/make_output.txt
