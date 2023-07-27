@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:57:52 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/26 10:52:39 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 12:19:49 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,18 @@ void	swap(t_cdlist **stack)
 	list_len = ft_list_len(&first);
 	if (list_len < 2)
 		return ;
+	if (list_len == 2)
+	{
+		rot(stack);
+		return ;
+	}
 	second = first->next;
 	first->next = second->next;
-	first->next->prev = first;
-	first->prev = second;
-	second->prev = first->prev;
 	first->prev->next = second;
+	first->next->prev = first;
+	second->prev = first->prev;
 	second->next = first;
+	first->prev = second;
 	(*stack) = second;
 }
 

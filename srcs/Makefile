@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/26 15:23:09 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/27 12:27:24 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,16 +33,17 @@ NOVISU 	= 0
 OBJDIR = objs
 FILE_EXTENSION = .c
 
-VPATH = .:./parse:./listfn:./operations
-SRC_PARSE = parse.c indexing.c
+VPATH = .:./parse:./listfn:./operations:./sort
+SRC_PARSE = parse.c indexing.c utils.c
 SRC_LISTFN = ft_create.c print_list.c
 SRC_OPS = swap.c rotate.c push.c print_ops.c
+SRC_SORT = utils_sort.c sort.c
 
 ################################################################################
 #                                  Makefile  objs                              #
 ################################################################################
 
-SRCS = $(SRC_PARSE) $(SRC_LISTFN) $(SRC_OPS) push_swap.c utils.c 
+SRCS = $(SRC_PARSE) $(SRC_LISTFN) $(SRC_OPS) $(SRC_SORT) push_swap.c
 OBJS = $(addprefix objs/, ${SRCS:%$(FILE_EXTENSION)=%.o})
 
 ################################################################################
@@ -107,11 +108,7 @@ header:
 	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| v2"
 	@echo
 
-#ifneq ($(HASH),)
-#	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)@$(HASH)\n"
-#else
 	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)\n"
-#endif
 	@printf "%b" "$(OBJ_COLOR)Author:$(WARN_COLOR)$(AUTHOR)\n"
 	@printf "%b" "$(OBJ_COLOR)Date:  $(WARN_COLOR)$(DATE)\n"
 	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CC)\n"
@@ -120,9 +117,8 @@ header:
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
-	@$(CC) $(CFLAGS) -g $(OBJS) -lft -L./myLib -o $@
-	@$(CC) $(CFLAGS) -g $(OBJS) -lft -L./myLib -o program 
-#	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) -lft -L./myLib -o $@
+	@$(CC) $(CFLAGS) $(OBJS) -lft -L./myLib -o program
 
 $(LIBFT):
 	@make re -C $(LIBFT_DIR) > make_output.txt 2>&1; \

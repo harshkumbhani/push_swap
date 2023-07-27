@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 07:46:10 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/26 11:31:06 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:44:16 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 static void	ft_rev_rot_ops(t_stack **stack, int operation)
 {
-	if (operation == RA)
+	if (operation == RRA)
 	{
 		rev_rot(&((*stack)->a));
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 	}
-	else if (operation == RB)
+	else if (operation == RRB)
 	{
 		rev_rot(&(*stack)->b);
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 	}
-	else if (operation == RR)
+	else if (operation == RRR)
 	{
 		rev_rot_both(stack);
-		ft_printf("rr\n");
+		ft_printf("rrr\n");
 	}
 }
 
@@ -83,7 +83,7 @@ static void	ft_swap_ops(t_stack **stack, int operation)
 	}
 }
 
-void	do_operations(t_stack **stack, int operation)
+void	do_operation(t_stack **stack, int operation)
 {
 	if (operation == SA || operation == SB || operation == SS)
 		ft_swap_ops(stack, operation);

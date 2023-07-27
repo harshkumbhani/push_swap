@@ -6,11 +6,13 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/24 15:57:38 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 11:06:24 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+#include "../include/operations.h"
+#include "../include/sort.h"
 
 int	main(int argc, char **argv)
 {
@@ -26,8 +28,8 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (EXIT_FAILURE);
 	}
+	sort(&stack);
 	ft_printf_list(&(stack->a));
-	ft_printf("\n\nNumber of nodes : %d\n", ft_list_len(&(stack->a)));
 	ft_free(NULL, &stack);
 	return (0);
 }

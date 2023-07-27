@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:04:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/26 14:59:58 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:13:06 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@ t_cdlist	*new_node(int data)
 	node->prev = NULL;
 	node ->next = NULL;
 	return (node);
-}
-
-void	prepend_node(t_cdlist **head)
-{
-	t_cdlist	*first;
-	t_cdlist	*previous;
-
-	first = (*head);
-	previous = first->prev;
 }
 
 void	add_back(t_cdlist **head, int data)

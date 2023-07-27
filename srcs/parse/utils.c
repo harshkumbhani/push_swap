@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 09:46:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/24 15:50:00 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 08:11:17 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	ft_free(char **arr, t_stack	**stack)
 	{
 		if ((*stack)->a)
 			ft_freelist(&(*stack)->a);
+		if ((*stack)->b)
+			ft_freelist(&(*stack)->b);
 		free(*stack);
 		*stack = NULL;
 	}

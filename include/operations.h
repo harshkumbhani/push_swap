@@ -6,14 +6,14 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:23:40 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/26 11:31:19 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 10:43:43 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPERATIONS_H
 # define OPERATIONS_H
 
-#include "push_swap.h"
+# include "push_swap.h"
 
 typedef enum	e_operations
 {
@@ -49,6 +49,6 @@ void	pb(t_stack **stack);
 
 // Functions for prinitng the opearations
 
-void	do_operations(t_stack **stack, int operation);
+void	do_operation(t_stack **stack, int operation);
 
 #endif
