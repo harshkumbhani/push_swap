@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/27 11:06:24 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:55:33 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (EXIT_FAILURE);
 	}
+	ft_print_index(&(stack->a));
 	sort(&stack);
-	ft_printf_list(&(stack->a));
+	ft_print_index(&(stack->a));
 	ft_free(NULL, &stack);
 	return (0);
 }

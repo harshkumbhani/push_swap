@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:19:12 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/25 10:44:55 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/27 16:57:56 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_isvalidarg(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (FALSE);
 	while (str[i])
 	{
 		while (str[i] != '\0' && ft_isspace(str[i]) == TRUE)
@@ -61,10 +63,6 @@ static int	ft_check(const char *str, t_cdlist **stack)
 	return (TRUE);
 }
 
-/// @brief 
-/// @param arg 
-/// @param stack 
-/// @return 
 static int	ft_process_arg(char *arg, t_stack **stack)
 {
 	char	**arr;
