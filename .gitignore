@@ -4,3 +4,6 @@ objs/
 test/
 srcs/program
 srcs/make_output.txt
+make_output.txt
+program
+myLib/libft.a

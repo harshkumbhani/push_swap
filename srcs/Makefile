@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/27 12:27:24 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/28 14:10:35 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,10 @@ LIBFT_DIR = ./myLib
 LIBFT = ./myLib/libft.a
 AUTHOR	= hkumbhan
 DATE	= 10.07.2023
-HASH 	=
 NOVISU 	= 0
 
+TESTER_GET  =   https://raw.githubusercontent.com/lorenuars19/push_swap_tester/main/push_swap_tester.pl
+TESTER      =   ./ps_tester.pl
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
@@ -37,7 +38,7 @@ VPATH = .:./parse:./listfn:./operations:./sort
 SRC_PARSE = parse.c indexing.c utils.c
 SRC_LISTFN = ft_create.c print_list.c
 SRC_OPS = swap.c rotate.c push.c print_ops.c
-SRC_SORT = utils_sort.c sort.c
+SRC_SORT = utils_sort.c sort.c sort_big.c
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -59,20 +60,8 @@ NO_COLOR    = \033[m
 
 COM_STRING   = "Compiling"
 
-ifeq ($(OS),Windows_NT) 
-    detected_OS := Windows
-else
-    detected_OS := $(shell sh -c 'uname 2>/dev/null || echo Unknown')
-endif
-
 RUN_CMD = $(1) 2> $@.log; \
 		RESULT=$$?
-
-ifeq ($(shell git rev-parse HEAD &>/dev/null; echo $$?),0)
-	AUTHOR	:= $(shell git log --format='%aN' | sort -u | awk '{printf "%s, ", $$0}' | rev | cut -c 3- | rev)
-	DATE	:= $(shell git log -1 --date=format:"%Y/%m/%d %T" --format="%ad")
-	HASH	:= $(shell git rev-parse --short HEAD)
-endif
 
 define run_and_test
 	printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; \
@@ -129,10 +118,20 @@ $(LIBFT):
 		exit 1; \
 	fi
 
-
 objs/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(call run_and_test,$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ )
+
+$(TESTER):
+	curl $(TESTER_GET) -o $(TESTER)
+3: $(NAME) $(TESTER)
+	perl $(TESTER) 3 100
+5: $(NAME) $(TESTER)
+	perl $(TESTER) 5 100
+100: $(NAME) $(TESTER)
+	perl $(TESTER) 100 100
+500: $(NAME) $(TESTER)
+	perl $(TESTER) 500 100
 
 clean: header
 	@echo
@@ -146,10 +145,11 @@ fclean: header clean
 	@rm -f $(NAME)
 	@printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"
 	@echo
-	
+
 norm: $(SRCS)
 	$(shell norminette | grep Error)
-	 	
+
 re: fclean all
+
 
 .PHONY: all clean fclean re header $(LIBFT)

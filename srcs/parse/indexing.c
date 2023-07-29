@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:06:06 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/26 15:02:09 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/28 11:41:44 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,5 @@ void	ft_indexing(t_cdlist	**stack)
 	}
 	ft_sort(arr, len);
 	ft_put_index(stack, arr, len);
-	//ft_print_index(stack);
 	free(arr);
 }
