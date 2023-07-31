@@ -5,9 +5,9 @@
      \___  |./ /___| |  | | (_| |   <  __/
          |_/\_____/\_|  |_/\__,_|_|\_\___| v2
 
-[0;36m Name:	[0;33m libft.a@fe9913c
+[0;36m Name:	[0;33m libft.a@14548ad
 [0;36m Author:[0;33m hkumbhan
-[0;36m Date:  [0;33m 2023/07/27 17:05:32
+[0;36m Date:  [0;33m 2023/07/29 15:42:56
 [0;36m CC: 	[0;33m cc
 [0;36m Flags: [0;33m -Wall -Wextra -Werror -MMD -I./header -g
 

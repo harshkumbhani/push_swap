@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/27 10:46:11 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/31 09:24:07 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void		add_back(t_cdlist **head, int data);
 size_t		ft_list_len(t_cdlist **head);
 void		ft_printf_list(t_cdlist **head);
 void		ft_print_index(t_cdlist **stack);
+int			list_min(t_cdlist *stack);
+int			list_max(t_cdlist *stack);
 
 // List from the PARSE folder
 

@@ -6,13 +6,13 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 07:49:44 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/28 14:49:26 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/31 09:46:32 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/sort.h"
 
-static void	sort_3(t_stack **stack)
+void	sort_3(t_stack **stack)
 {
 	t_cdlist	*top;
 

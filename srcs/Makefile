@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/28 14:10:35 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/07/31 09:18:48 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ FILE_EXTENSION = .c
 
 VPATH = .:./parse:./listfn:./operations:./sort
 SRC_PARSE = parse.c indexing.c utils.c
-SRC_LISTFN = ft_create.c print_list.c
+SRC_LISTFN = ft_create.c print_list.c list_utils.c
 SRC_OPS = swap.c rotate.c push.c print_ops.c
 SRC_SORT = utils_sort.c sort.c sort_big.c
 

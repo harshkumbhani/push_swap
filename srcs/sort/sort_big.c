@@ -6,149 +6,117 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 14:49:28 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/29 15:29:12 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:37:04 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/sort.h"
 #define CHUNK_COUNT	5
 
-static int	has_elements_in_range(t_cdlist **a, int min, int max)
+static int	return_pos(t_cdlist	*stack, int index)
 {
+	int			pos;
 	t_cdlist	*tmp;
 
-	tmp = (*a);
+	pos = 0;
+	tmp = stack;
 	while (1)
 	{
-		if ((*a)->index >= min && (*a)->index <= max)
-			return (1);
+		if (tmp->index == index)
+			return (pos);
 		tmp = tmp->next;
-		if (tmp == (*a))
-			break;
+		pos++;
+		if (tmp == stack)
+			break ;
 	}
-	return (0);
+	return (pos);
 }
 
-static void	move_to_top(t_stack **stack, int min, int max)
+static void	stackb_max_to_top(t_stack **stack)
 {
-	int	len = ft_list_len(&(*stack)->a) / 2;
+	int	max;
+	int	stack_len;
 	t_cdlist	*first;
-	int		i , j;
-	t_cdlist	*second;
 
-	i = 0;
-	j = 0;
-	first = (*stack)->a;
-	second = (*stack)->a;
+	first = (*stack)->b;
+	stack_len = ft_list_len(&first) / 2;
+	max = list_max(first);
 	while (1)
 	{
-		if (first->index >= min && first->index <= max)
+		if ((*stack)->b->index == max)
 			break ;
-		i++;
-		first = first->next;
-		if (first == (*stack)->a)
-			break;
-	}
-	//while (1)
-	//{
-	//	if (second->index >= min && second->index <= max)
-	//		break ;
-	//	j++;
-	//	second = second->prev;
-	//	if (second == (*stack)->a)
-	//		break;
-	//}
-	if (i < len * 2 - i)
-	{
-		while ((*stack)->a != first)
-			do_operation(stack, RA);
-	}
-	else
-	{
-		while ((*stack)->a != first)
-			do_operation(stack, RRA);
+		if (return_pos(first, max) < stack_len)
+			do_operation(stack, RB);
+		else
+			do_operation(stack, RRB);
 	}
 }
 
-static void	move_to_top_b(t_stack **stack)
+static	void	find_and_move(t_stack **stack)
 {
 	t_cdlist	*firsta;
 	t_cdlist	*firstb;
-	t_cdlist	*tmp;
+	int			index;
 	int			tmp;
-	int			listb_len;
-	int			i;
 
-	i = 0;
-	listb_len = ft_list_len(&(*stack)->b);
-	tmp = (*stack)->a->index + 1;
+	tmp = 0;
 	firsta = (*stack)->a;
 	firstb = (*stack)->b;
-	tmp = (*stack)->b;
-	while (1)
+	if (firsta->index > list_max(firstb) || firsta->index < list_min(firstb))
 	{
-		if (firstb->index == tmp)
-			break;
-		tmp++;
-		firstb = firstb->next;
-		if (firstb == (*stack)->b)
-			break ;
+		stackb_max_to_top(stack);
+		return ;
 	}
 	while (1)
 	{
-		if (tmp == firstb || tmp == (*stack)->b)
-			break ;
-		i++;
-		tmp = tmp->next;
+		
+		break ;
 	}
-		if (i < len * 2 - i)
-	{
-	while ((*stack)->a->prev != firstb)
-		do_operation(stack, RA);
-	}
-	else
-	{
-		while ((*stack)->a->prev != firstb)
-			do_operation(stack, RRA);
-	}
+	return ;
 }
 
 void	sort_big(t_stack **stack)
 {
-	int	list_len;
-	int	chunk_size;
-	int	remainder;
-	int	lower_bound;
-	int	upper_bound;
+	int	max;
+	t_cdlist	*tmp;
 	int	i;
-	int	index_to_move;
 
-	list_len = ft_list_len(&(*stack)->a);
-	chunk_size = list_len / CHUNK_COUNT;
-	remainder = list_len % CHUNK_COUNT;
 	i = 0;
-	while (i < CHUNK_COUNT)
+	max = 0;
+	if (is_sorted((*stack)->a))
+		return ;
+	do_operation(stack, PB);
+	do_operation(stack, PB);
+	while (ft_list_len(&(*stack)->a) > 0)
 	{
-		lower_bound = i * chunk_size;
-		upper_bound = (i + 1) * chunk_size - 1;
-		if (remainder > 0)
-		{
-			upper_bound++;
-			remainder--;
-		}
-		while (has_elements_in_range((&(*stack)->a), lower_bound, upper_bound))
-		{
-			move_to_top(stack, lower_bound, upper_bound);
-			//int correct_position_on_b = find_correct_position_on_b(stack, index_to_move);
-			move_to_top_b(stack);
-			do_operation(stack, PB);
-		}
-		i++;
+		// Find the cheapeast index to move to stack B from stack A
+		// cheapest index
+		find_and_move(stack);
+		// Find the position in the for the current element in stack B
+		// push to stack b
+		do_operation(stack, PB);
 	}
 	while (ft_list_len(&(*stack)->b) > 0)
 	{
-		int	max_index = find_max_index(&(*stack)->b);
-		move_to_top_b_stack(stack, max_index);
+		tmp = (*stack)->b;
+		max = list_max((*stack)->b);
+		while (1)
+		{
+			i = 0;
+			if (tmp->index == max)
+				break;
+			tmp = tmp->next;
+			i++;
+		}
+		while (1)
+		{
+			if ((*stack)->b == tmp)
+				break;
+			if (i < (int)ft_list_len(&(*stack)->b) / 2)
+				do_operation(stack, RB);
+			else
+				do_operation(stack, RRB);
+		}
 		do_operation(stack, PA);
 	}
 }
