@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:04:27 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/27 08:13:06 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/01 11:14:12 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	add_back(t_cdlist **head, int data)
 	}
 }
 
-size_t	ft_list_len(t_cdlist **head)
+int	ft_list_len(t_cdlist **head)
 {
 	t_cdlist	*current;
-	size_t		i;
+	int			i;
 
 	i = 0;
 	if (!head || !(*head))

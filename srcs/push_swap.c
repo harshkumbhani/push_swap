@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/31 13:04:00 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:02:37 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int	main(int argc, char **argv)
 	}
 	sort(&stack);
 	//i = list_min((stack)->a);
-	ft_printf("\n\nStack a:\n");
-	ft_print_index(&(stack->a));
+	//ft_printf("\n\nStack a:\n");
+	//ft_print_index(&(stack->a));
 	//ft_printf("\n\nMin index: %d\n", i);
 	//i = list_max((stack)->a);
-	ft_printf("\n\nStack b:\n");
-	ft_print_index(&(stack->b));
+	//ft_printf("\n\nStack b:\n");
+	//ft_print_index(&(stack->b));
 	//ft_printf("\n\nMax index: %d\n", i);
 	ft_free(NULL, &stack);
 	return (EXIT_SUCCESS);
