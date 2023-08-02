@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 14:49:28 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/01 14:02:10 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:23:20 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void	stackb_max_to_top(t_stack **stack)
 
 	first = (*stack)->b;
 	max = list_max(first);
+	i = 0;
 	while (1)
 	{
-		i = 0;
 		if (first->index == max)
 			break;
 		first = first->next;
@@ -136,17 +136,19 @@ int	apply_rarb(t_stack **stack, int index)
 int	apply_rrarrb(t_stack **stack, int index)
 {
 	int	i;
+	//int	pos;
 
+	//pos = pos_in_b((*stack)->b, index);
 	i = ft_list_len(&(*stack)->b);
-	while ((*stack)->a->index != index && i - pos_in_b((*stack)->b, index) > 0 )
+	while (pos_in_b((*stack)->b, index) != 0 && (*stack)->a->index != index && i - pos_in_b((*stack)->b, index) > 0)
 		do_operation(stack, RRR);
 	while ((*stack)->a->index != index)
 		do_operation(stack, RRA);
-	while (ft_list_len(&(*stack)->b) - pos_in_b((*stack)->b, index) > 0)
+	while (i - pos_in_b((*stack)->b, index) > 0)
 	{
-		do_operation(stack, RRB);
 		if (pos_in_b((*stack)->b, index)  == 0)
 			break ;
+		do_operation(stack, RRB);
 	}
 	return (-1);
 }
@@ -163,15 +165,17 @@ int	apply_rrarb(t_stack **stack, int index)
 int	apply_rarrb(t_stack **stack, int index)
 {
 	int	i;
+	//int	pos;
 
+	//pos = pos_in_b((*stack)->b, index);
 	i = ft_list_len(&(*stack)->b);
 	while ((*stack)->a->index != index)
 		do_operation(stack, RA);
-	while ((&(*stack)->b) - pos_in_b((*stack)->b, index) > 0)
+	while (i - pos_in_b((*stack)->b, index) > 0)
 	{
-		do_operation(stack, RRB);
 		if (pos_in_b((*stack)->b, index)  == 0)
 			break ;
+		do_operation(stack, RRB);
 	}	
 	return (-1);
 }
