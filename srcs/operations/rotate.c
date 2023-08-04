@@ -6,11 +6,11 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:33:02 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/27 10:44:26 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:30:24 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/operations.h"
+#include "push_swap.h"
 
 void	rot(t_cdlist **stack)
 {

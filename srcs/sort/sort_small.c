@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 07:49:44 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/31 09:46:32 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:06:27 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/sort.h"
+#include "push_swap.h"
 
 void	sort_3(t_stack **stack)
 {
@@ -21,14 +21,14 @@ void	sort_3(t_stack **stack)
 		return ;
 	if (top->index > top->next->index
 		&& top->index > top->next->next->index)
-		do_operation(stack, RA);
+		do_operation(stack, RA, 0);
 	top = (*stack)->a;
 	if (top->next->index > top->index
 		&& top->next->index > top->next->next->index)
-		do_operation(stack, RRA);
+		do_operation(stack, RRA, 0);
 	top = (*stack)->a;
 	if (top->index > top->next->index)
-		do_operation(stack, SA);
+		do_operation(stack, SA, 0);
 }
 
 static int	count_rotations(t_cdlist *stack, int index)
@@ -62,13 +62,13 @@ static void sort_5(t_stack **stack, int i)
 		while ((*stack)->a->index != i)
 		{
 			if (count_rotations((*stack)->a, i) <= len / 2)
-				do_operation(stack, RA);
+				do_operation(stack, RA, 0);
 			else
-				do_operation(stack, RRA);
+				do_operation(stack, RRA, 0);
 		}
 		if (is_sorted((*stack)->a) == TRUE)
 			break ;
-		do_operation(stack, PB);
+		do_operation(stack, PB, 0);
 		if (ft_list_len(&((*stack)->a)) == 3)
 		{
 			sort_3(stack);
@@ -76,7 +76,7 @@ static void sort_5(t_stack **stack, int i)
 		}
 	}
 	while (ft_list_len(&((*stack)->b)) > 0)
-		do_operation(stack, PA);
+		do_operation(stack, PA, 0);
 }
 
 void	sort(t_stack **stack)
@@ -91,7 +91,7 @@ void	sort(t_stack **stack)
 	if (len == 2)
 	{
 		if (is_sorted((*stack)->a) == FALSE)
-			do_operation(stack, SA);
+			do_operation(stack, SA, 0);
 	}
 	if (len == 3)
 		sort_3(stack);

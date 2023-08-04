@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/07/31 09:18:48 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/08/04 11:08:02 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,8 @@ CC		= cc
 CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./include -I./srcs/myLib/header -g
 HEADERS = -I./include -I./srcs/myLib/header
 DEPS = ./header/push_swap_h
-LIBFT_DIR = ./myLib
-LIBFT = ./myLib/libft.a
+LIBFT_DIR = ./srcs/myLib
+LIBFT = ./srcs/myLib/libft.a
 AUTHOR	= hkumbhan
 DATE	= 10.07.2023
 NOVISU 	= 0
@@ -34,11 +34,11 @@ TESTER      =   ./ps_tester.pl
 OBJDIR = objs
 FILE_EXTENSION = .c
 
-VPATH = .:./parse:./listfn:./operations:./sort
+VPATH = .:./srcs/parse:./srcs/listfn:./srcs/operations:./srcs/sort
 SRC_PARSE = parse.c indexing.c utils.c
 SRC_LISTFN = ft_create.c print_list.c list_utils.c
-SRC_OPS = swap.c rotate.c push.c print_ops.c
-SRC_SORT = utils_sort.c sort.c sort_big.c
+SRC_OPS = swap.c rotate.c push.c print_ops.c print_op_boosted.c
+SRC_SORT = sort_utils.c sort_small.c sort_big.c
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -106,8 +106,8 @@ header:
 
 $(NAME): $(OBJS) $(LIBFT)
 	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
-	@$(CC) $(CFLAGS) $(OBJS) -lft -L./myLib -o $@
-	@$(CC) $(CFLAGS) $(OBJS) -lft -L./myLib -o program
+	@$(CC) $(CFLAGS) $(OBJS) -lft -L./srcs/myLib -o $@
+	@$(CC) $(CFLAGS) $(OBJS) -lft -L./srcs/myLib -o program
 
 $(LIBFT):
 	@make re -C $(LIBFT_DIR) > make_output.txt 2>&1; \
@@ -121,6 +121,7 @@ $(LIBFT):
 objs/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(call run_and_test,$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ )
+#	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ 
 
 $(TESTER):
 	curl $(TESTER_GET) -o $(TESTER)

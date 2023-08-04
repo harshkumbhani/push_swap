@@ -6,11 +6,11 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:26:32 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/27 10:44:23 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:30:20 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/operations.h"
+#include "push_swap.h"
 
 static void	ft_update_node(t_cdlist	*node_to_push, t_cdlist *dst)
 {

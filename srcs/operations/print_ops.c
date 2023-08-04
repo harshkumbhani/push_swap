@@ -6,11 +6,11 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 07:46:10 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/27 10:44:16 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/04 10:30:16 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/operations.h"
+#include "push_swap.h"
 
 static void	ft_rev_rot_ops(t_stack **stack, int operation)
 {
@@ -83,7 +83,7 @@ static void	ft_swap_ops(t_stack **stack, int operation)
 	}
 }
 
-void	do_operation(t_stack **stack, int operation)
+void	do_operation(t_stack **stack, int operation, int index)
 {
 	if (operation == SA || operation == SB || operation == SS)
 		ft_swap_ops(stack, operation);
@@ -93,4 +93,12 @@ void	do_operation(t_stack **stack, int operation)
 		ft_rot_ops(stack, operation);
 	else if (operation == RRA || operation == RRB || operation == RRR)
 		ft_rev_rot_ops(stack, operation);
+	else if (operation == RARB)
+		do_rarb(stack, index);
+	else if (operation == RRARRB)
+		do_rrarrb(stack, index);
+	else if (operation == RRARB)
+		do_rrarb(stack, index);
+	else if (operation == RARRB)
+		do_rarrb(stack, index);
 }

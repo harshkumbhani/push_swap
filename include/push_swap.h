@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/01 11:14:23 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:07:03 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 // Libft library headers
 
 # include "../srcs/myLib/header/library.h"
-
+# include "operations.h"
+# include "sort.h"
 // Struct for circular doubly linked list
 
 typedef	struct s_cdlist
@@ -53,6 +54,10 @@ void		ft_printf_list(t_cdlist **head);
 void		ft_print_index(t_cdlist **stack);
 int			list_min(t_cdlist *stack);
 int			list_max(t_cdlist *stack);
+
+int			return_pos(t_cdlist	*stack, int index);
+void		stackb_max_to_top(t_stack **stack);
+int			pos_in_b(t_cdlist *b, int index);
 
 // List from the PARSE folder
 
