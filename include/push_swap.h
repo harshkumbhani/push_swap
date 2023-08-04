@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 11:07:03 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:39:07 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "../srcs/myLib/header/library.h"
 # include "operations.h"
 # include "sort.h"
+# include "bonus.h"
 // Struct for circular doubly linked list
 
 typedef	struct s_cdlist

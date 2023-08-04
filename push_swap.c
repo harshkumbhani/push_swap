@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/01 14:02:37 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:40:57 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_leaks(void)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
-	//int		i;
+
 	//atexit(check_leaks);
 	if (argc < 2)
 		return (EXIT_FAILURE);
@@ -35,14 +35,6 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	sort(&stack);
-	//i = list_min((stack)->a);
-	//ft_printf("\n\nStack a:\n");
-	//ft_print_index(&(stack->a));
-	//ft_printf("\n\nMin index: %d\n", i);
-	//i = list_max((stack)->a);
-	//ft_printf("\n\nStack b:\n");
-	//ft_print_index(&(stack->b));
-	//ft_printf("\n\nMax index: %d\n", i);
 	ft_free(NULL, &stack);
 	return (EXIT_SUCCESS);
 }

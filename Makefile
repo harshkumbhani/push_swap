@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/08/04 11:08:02 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/08/04 13:51:53 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,15 @@ TESTER      =   ./ps_tester.pl
 OBJDIR = objs
 FILE_EXTENSION = .c
 
-VPATH = .:./srcs/parse:./srcs/listfn:./srcs/operations:./srcs/sort
-SRC_PARSE = parse.c indexing.c utils.c
-SRC_LISTFN = ft_create.c print_list.c list_utils.c
-SRC_OPS = swap.c rotate.c push.c print_ops.c print_op_boosted.c
-SRC_SORT = sort_utils.c sort_small.c sort_big.c
+VPATH 		= .:./srcs/parse:./srcs/listfn:./srcs/operations:./srcs/sort:./srcs/bonus
+
+SRC_PARSE 	= parse.c indexing.c utils.c
+
+SRC_LISTFN 	= ft_create.c print_list.c list_utils.c
+
+SRC_OPS 	= swap.c rotate.c push.c print_ops.c print_op_boosted.c
+
+SRC_SORT 	= sort_utils.c sort_small.c sort_big.c
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -47,6 +51,8 @@ SRC_SORT = sort_utils.c sort_small.c sort_big.c
 SRCS = $(SRC_PARSE) $(SRC_LISTFN) $(SRC_OPS) $(SRC_SORT) push_swap.c
 OBJS = $(addprefix objs/, ${SRCS:%$(FILE_EXTENSION)=%.o})
 
+BONUS_SRC = $(SRC_PARSE) $(SRC_LISTFN) $(SRC_OPS) checker.c bonus_utils.c
+BONUS_OBJS = $(addprefix objs/, ${BONUS_SRC:%$(FILE_EXTENSION)=%.o})
 ################################################################################
 #                                 Makefile logic                               #
 ################################################################################
@@ -85,7 +91,7 @@ endef
 #                                 Makefile rules                             #
 ################################################################################
 
-all: header $(NAME)
+all: header $(NAME) bonus
 
 header:
 	@printf "%b" "$(OK_COLOR)"
@@ -122,6 +128,9 @@ objs/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(call run_and_test,$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ )
 #	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ 
+
+bonus: $(BONUS_OBJS)
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) -lft -L./srcs/myLib -o checker
 
 $(TESTER):
 	curl $(TESTER_GET) -o $(TESTER)
