@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: harsh <harsh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:37:42 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 13:49:46 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:26:56 by harsh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	ss(t_stack **stack);
 void	rr(t_stack **stack);
 void	rrr(t_stack **stack);
 
-int	is_sorted_b(t_cdlist	*stack);
+int		is_sorted_bonus(t_cdlist	*stack);
 
 #endif

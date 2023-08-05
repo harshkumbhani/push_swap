@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: harsh <harsh@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:28:45 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 13:49:52 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/05 08:26:10 by harsh            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	rrr(t_stack **stack)
 	rev_rot(&(*stack)->b);
 }
 
-int	is_sorted_b(t_cdlist	*stack)
+int	is_sorted_bonus(t_cdlist	*stack)
 {
 	t_cdlist	*tmp;
 
