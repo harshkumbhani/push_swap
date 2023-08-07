@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 13:28:45 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/07 08:48:37 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:04:29 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	is_sorted_bonus(t_cdlist	*stack)
 	t_cdlist	*tmp;
 
 	tmp = stack;
+	if (stack == NULL)
+		return (TRUE);
 	while (tmp->next != stack)
 	{
 		if (tmp->index > tmp->next->index)

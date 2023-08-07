@@ -6,14 +6,16 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 19:36:18 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/21 10:00:01 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 11:48:04 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # define FALSE 0
 # define TRUE  1

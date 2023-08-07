@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:11:46 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 11:06:31 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 11:55:56 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	is_sorted(t_cdlist	*stack)
 	t_cdlist	*tmp;
 
 	tmp = stack;
+	if (stack == NULL)
+		return (TRUE);
 	while (tmp->next != stack)
 	{
 		if (tmp->index > tmp->next->index)

@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 11:39:07 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:05:46 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef	struct s_stack
 }	t_stack;
 
 # define ALLOC_FAIL NULL
-
 // Functions from the LISTFN folder
 
 t_cdlist	*new_node(int data);

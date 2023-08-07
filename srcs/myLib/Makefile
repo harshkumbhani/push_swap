@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/15 11:34:52 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/08/07 08:12:00 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/08/07 11:50:30 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,20 +69,18 @@ NO_COLOR    = \033[m
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo
+	@echo "Compiling Libft.a library...\n"
 	@ar rcs $@ $^
 
 $(OBJDIR)/%.o: %$(FILE_EXTENSION)
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-clean: header
-	@echo
+clean:
 	@rm -rf objs
 
-fclean: header clean
+fclean: clean
 	@rm -f $(NAME)
-	@echo
 	
 norm: $(SRCS)
 	$(shell norminette | grep Error)

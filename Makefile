@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/08/07 09:52:24 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/08/07 11:52:13 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ header:
 $(NAME): $(OBJS) $(LIBFT_LIB)
 	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $@
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o program 
 
 $(LIBFT_LIB):
 	@make re -C $(LIBFT_DIR) > make_output.txt 2>&1; \
