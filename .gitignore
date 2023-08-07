@@ -13,3 +13,5 @@ checker
 checker_Mac
 debug*
 srcs/myLib/libft.a
+ps_tester.pl
+.DS_Store
