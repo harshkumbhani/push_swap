@@ -12,3 +12,4 @@ push_swap
 checker
 checker_Mac
 debug*
+srcs/myLib/libft.a
