@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 14:49:28 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 11:06:20 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:09:49 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	num_moves(t_stack **stack)
 	min_moves = tmp.num_moves;
 	min_index = stacka->index;
 	stacka = stacka->next;
-	while(stacka != (*stack)->a)
+	while (stacka != (*stack)->a)
 	{
 		tmp = find_cheapest_case(stack, stacka->index);
 		if (tmp.num_moves < min_moves)
@@ -67,13 +67,13 @@ static int	num_moves(t_stack **stack)
 
 static void	apply_cheapest_case(t_stack **stack, int index)
 {
-	t_moves moves;
+	t_moves	moves;
 
 	moves = find_cheapest_case(stack, index);
 	if (moves.case_id == RARB)
 		do_operation(stack, RARB, index);
 	if (moves.case_id == RRARRB)
-		do_operation(stack,RRARRB, index);
+		do_operation(stack, RRARRB, index);
 	if (moves.case_id == RARRB)
 		do_operation(stack, RARRB, index);
 	if (moves.case_id == RRARB)

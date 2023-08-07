@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 09:10:24 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 09:56:00 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:03:30 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	list_min(t_cdlist *stack)
 			min_index = first->index;
 		first = first->next;
 		if (first == stack)
-			break;
+			break ;
 	}
 	return (min_index);
 }
@@ -43,7 +43,7 @@ int	list_max(t_cdlist *stack)
 			max_index = first->index;
 		first = first->next;
 		if (first == stack)
-			break;
+			break ;
 	}
 	return (max_index);
 }
@@ -79,14 +79,14 @@ void	stackb_max_to_top(t_stack **stack)
 	while (1)
 	{
 		if (first->index == max)
-			break;
+			break ;
 		first = first->next;
 		i++;
 	}
 	while (1)
 	{
 		if ((*stack)->b == first)
-			break;
+			break ;
 		if (i < (int)ft_list_len(&(*stack)->b) / 2)
 			do_operation(stack, RB, 0);
 		else
@@ -105,7 +105,7 @@ int	pos_in_b(t_cdlist *b, int index)
 		pos = 0;
 	else if (index > list_max(b) || index < list_min(b))
 		pos = return_pos(b, list_max(b));
-	else 
+	else
 	{
 		tmp = b->next;
 		while (1)

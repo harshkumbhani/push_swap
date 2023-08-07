@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 15:07:34 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/07 12:05:46 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:12:53 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "bonus.h"
 // Struct for circular doubly linked list
 
-typedef	struct s_cdlist
+typedef struct s_cdlist
 {
 	int				data;
 	int				index;
@@ -38,7 +38,7 @@ typedef	struct s_cdlist
 	struct s_cdlist	*next;
 }	t_cdlist;
 
-typedef	struct s_stack
+typedef struct s_stack
 {
 	t_cdlist	*a;
 	t_cdlist	*b;

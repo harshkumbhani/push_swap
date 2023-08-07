@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 07:49:44 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 11:06:27 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:10:08 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	count_rotations(t_cdlist *stack, int index)
 	while (1)
 	{
 		if (tmp->index == index)
-			break;
+			break ;
 		count++;
 		tmp = tmp->next;
 		if (tmp == stack)
@@ -50,7 +50,7 @@ static int	count_rotations(t_cdlist *stack, int index)
 	return (count);
 }
 
-static void sort_5(t_stack **stack, int i)
+static void	sort_5(t_stack **stack, int i)
 {
 	int	len;
 

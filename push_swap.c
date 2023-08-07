@@ -6,24 +6,24 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 16:23:58 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 11:40:57 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 13:59:03 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-#include "../include/operations.h"
-#include "../include/sort.h"
+#include "push_swap.h"
+#include "operations.h"
+#include "sort.h"
 
-void	check_leaks(void)
-{
-	system("leaks push_swap");
-}
+//void	check_leaks(void)
+//{
+//	system("leaks push_swap");
+//}
+//atexit(check_leaks);
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 
-	//atexit(check_leaks);
 	if (argc < 2)
 		return (EXIT_FAILURE);
 	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));

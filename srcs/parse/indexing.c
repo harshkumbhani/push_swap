@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 16:06:06 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/07/28 11:41:44 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:09:12 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	ft_sort(int *arr, int len)
 			i++;
 		}
 		if (flag == 0)
-			break;
+			break ;
 	}
 }
 
@@ -77,7 +77,7 @@ void	ft_indexing(t_cdlist	**stack)
 	current = (*stack);
 	if (!stack || !(*stack))
 		return ;
-	arr = (int	*)ft_calloc(len, sizeof(int));
+	arr = (int *)ft_calloc(len, sizeof(int));
 	i = -1;
 	while (++i < len)
 	{

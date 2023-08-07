@@ -6,14 +6,14 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:23:40 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/04 11:03:40 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:12:32 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPERATIONS_H
 # define OPERATIONS_H
 
-typedef enum	e_operations
+typedef enum e_operations
 {
 	SA,
 	SB,
@@ -30,12 +30,12 @@ typedef enum	e_operations
 	RRARRB,
 	RARRB,
 	RRARB
-} t_operations;
+}	t_operations;
 
 // FUNCTIONS DEFS FOR SWAPPING 
 
-typedef struct s_cdlist t_cdlist;
-typedef struct s_stack t_stack;
+typedef struct s_cdlist	t_cdlist;
+typedef struct s_stack	t_stack;
 
 void	swap(t_cdlist **stack);
 void	swap_both(t_stack **stack);
