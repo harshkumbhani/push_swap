@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: harsh <harsh@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:39:49 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/05 08:46:56 by harsh            ###   ########.fr       */
+/*   Updated: 2023/08/07 08:50:38 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack;
 	char	*command;
 
-	atexit(check_leaks);
+	//atexit(check_leaks);
 	if (argc < 2)
 		return (EXIT_FAILURE);
 	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
