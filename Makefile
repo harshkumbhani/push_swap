@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/08/07 11:52:13 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/08/07 14:21:31 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,6 @@ CC		= cc
 CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./include -I./srcs/myLib/header -g
 LIBFT_DIR = ./srcs/myLib
 LIBFT_LIB = ./srcs/myLib/libft.a
-AUTHOR	= hkumbhan
-DATE	= $(shell Date)
 
 TESTER_GET  =   https://raw.githubusercontent.com/lorenuars19/push_swap_tester/main/push_swap_tester.pl
 TESTER      =   ./ps_tester.pl
@@ -68,23 +66,6 @@ COM_STRING   = "Compiling"
 
 all: $(NAME)
 
-header:
-	@printf "%b" "$(OK_COLOR)"
-	@echo "       ___  _____ ___  ___      _        "
-	@echo "       /   |/ __  \|  \/  |     | |       "
-	@echo "      / /| |\`' / /'| .  . | __ _| | _____ "
-	@echo "     / /_| |  / /  | |\/| |/ _\` | |/ / _ \\"
-	@echo "     \___  |./ /___| |  | | (_| |   <  __/"
-	@echo "         |_/\_____/\_|  |_/\__,_|_|\_\___| v2"
-	@echo
-
-	@printf "%b" "$(OBJ_COLOR)Name:	$(WARN_COLOR)$(NAME)\n"
-	@printf "%b" "$(OBJ_COLOR)Author:$(WARN_COLOR)$(AUTHOR)\n"
-	@printf "%b" "$(OBJ_COLOR)Date:  $(WARN_COLOR)$(DATE)\n"
-	@printf "%b" "$(OBJ_COLOR)CC: 	$(WARN_COLOR)$(CC)\n"
-	@printf "%b" "$(OBJ_COLOR)Flags: $(WARN_COLOR)$(CFLAGS)\n"
-	@echo
-
 $(NAME): $(OBJS) $(LIBFT_LIB)
 	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $@
@@ -120,14 +101,14 @@ $(TESTER):
 500: $(NAME) $(TESTER)
 	perl $(TESTER) 500 100
 
-clean: header
+clean:
 	@echo
 	@printf "%b" "$(COM_COLOR)Cleaning objects and dependency files...$(NO_COLOR)"
 	@make clean -C $(LIBFT_DIR)
-	@rm -rf objs
+	@rm -rf objs program
 	@echo
 
-fclean: header clean
+fclean: clean
 	@printf "%b" "$(COM_COLOR)Cleaning libft library...$(NO_COLOR)"
 	@make fclean -C $(LIBFT_DIR)
 	@rm -f $(NAME) checker
@@ -138,4 +119,4 @@ norm: $(SRCS)
 
 re: fclean all
 
-.PHONY: all clean fclean re header $(LIBFT) bonus
+.PHONY: all clean fclean re $(LIBFT) bonus
