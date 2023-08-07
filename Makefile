@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/08/04 13:51:53 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/08/07 09:52:24 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,10 @@
 NAME 	= push_swap
 CC		= cc
 CFLAGS 	= -Wall -Wextra -Werror -MMD -MP -I./include -I./srcs/myLib/header -g
-HEADERS = -I./include -I./srcs/myLib/header
-DEPS = ./header/push_swap_h
 LIBFT_DIR = ./srcs/myLib
-LIBFT = ./srcs/myLib/libft.a
+LIBFT_LIB = ./srcs/myLib/libft.a
 AUTHOR	= hkumbhan
-DATE	= 10.07.2023
-NOVISU 	= 0
+DATE	= $(shell Date)
 
 TESTER_GET  =   https://raw.githubusercontent.com/lorenuars19/push_swap_tester/main/push_swap_tester.pl
 TESTER      =   ./ps_tester.pl
@@ -31,8 +28,7 @@ TESTER      =   ./ps_tester.pl
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
-OBJDIR = objs
-FILE_EXTENSION = .c
+OBJDIR = ./objs
 
 VPATH 		= .:./srcs/parse:./srcs/listfn:./srcs/operations:./srcs/sort:./srcs/bonus
 
@@ -49,10 +45,10 @@ SRC_SORT 	= sort_utils.c sort_small.c sort_big.c
 ################################################################################
 
 SRCS = $(SRC_PARSE) $(SRC_LISTFN) $(SRC_OPS) $(SRC_SORT) push_swap.c
-OBJS = $(addprefix objs/, ${SRCS:%$(FILE_EXTENSION)=%.o})
+OBJS = $(addprefix $(OBJDIR)/, ${SRCS:%.c=%.o})
 
 BONUS_SRC = $(SRC_PARSE) $(SRC_LISTFN) $(SRC_OPS) checker.c bonus_utils.c
-BONUS_OBJS = $(addprefix objs/, ${BONUS_SRC:%$(FILE_EXTENSION)=%.o})
+BONUS_OBJS = $(addprefix $(OBJDIR)/, ${BONUS_SRC:%.c=%.o})
 ################################################################################
 #                                 Makefile logic                               #
 ################################################################################
@@ -66,32 +62,11 @@ NO_COLOR    = \033[m
 
 COM_STRING   = "Compiling"
 
-RUN_CMD = $(1) 2> $@.log; \
-		RESULT=$$?
-
-define run_and_test
-	printf "%b%-46b" "$(COM_COLOR)$(COM_STRING) " "$(OBJ_COLOR)$(@F)$(NO_COLOR)"; \
-	$(RUN_CMD); \
-	if [ $$RESULT -ne 0 ]; then \
-		printf "%b\n" "$(ERROR_COLOR)[✖]$(NO_COLOR)"; \
-		if [ $(NOVISU) -eq 0 ]; then \
-			echo; \
-		fi; \
-	elif [ -s $@.log ]; then \
-		printf "%b\n" "$(WARN_COLOR)[⚠]$(NO_COLOR)"; \
-	else  \
-		printf "%b\r" "$(OK_COLOR)[✓]$(NO_COLOR)"; \
-	fi; \
-	cat $@.log; \
-	rm -f $@.log; \
-	exit $$RESULT
-endef
-
 ################################################################################
 #                                 Makefile rules                             #
 ################################################################################
 
-all: header $(NAME) bonus
+all: $(NAME)
 
 header:
 	@printf "%b" "$(OK_COLOR)"
@@ -110,12 +85,11 @@ header:
 	@printf "%b" "$(OBJ_COLOR)Flags: $(WARN_COLOR)$(CFLAGS)\n"
 	@echo
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT_LIB)
 	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
-	@$(CC) $(CFLAGS) $(OBJS) -lft -L./srcs/myLib -o $@
-	@$(CC) $(CFLAGS) $(OBJS) -lft -L./srcs/myLib -o program
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $@
 
-$(LIBFT):
+$(LIBFT_LIB):
 	@make re -C $(LIBFT_DIR) > make_output.txt 2>&1; \
 	if [ $$? -eq 0 ]; then \
 		echo "$(OK_COLOR)LIBFT.A compilation successful.$(NO_COLOR)"; \
@@ -124,13 +98,15 @@ $(LIBFT):
 		exit 1; \
 	fi
 
-objs/%.o: %.c
+$(OBJDIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	@$(call run_and_test,$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ )
-#	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ 
+	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@ 
 
-bonus: $(BONUS_OBJS)
-	@$(CC) $(CFLAGS) $(BONUS_OBJS) -lft -L./srcs/myLib -o checker
+bonus: checker
+
+checker: $(BONUS_OBJS) $(LIBFT_LIB)
+	@echo "$(COM_COLOR)$(COM_STRING) $@ $(OBJ_COLOR)$(OBJS) $(NO_COLOR)"
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(LIBFT_LIB) -o $@
 
 $(TESTER):
 	curl $(TESTER_GET) -o $(TESTER)
@@ -146,14 +122,14 @@ $(TESTER):
 clean: header
 	@echo
 	@printf "%b" "$(COM_COLOR)Cleaning objects and dependency files...$(NO_COLOR)"
+	@make clean -C $(LIBFT_DIR)
 	@rm -rf objs
-	@printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"
 	@echo
 
 fclean: header clean
-	@printf "%b" "$(COM_COLOR)Cleaning library...$(NO_COLOR)"
-	@rm -f $(NAME)
-	@printf "%b\n" "$(OK_COLOR)[✓]$(NO_COLOR)"
+	@printf "%b" "$(COM_COLOR)Cleaning libft library...$(NO_COLOR)"
+	@make fclean -C $(LIBFT_DIR)
+	@rm -f $(NAME) checker
 	@echo
 
 norm: $(SRCS)
@@ -161,5 +137,4 @@ norm: $(SRCS)
 
 re: fclean all
 
-
-.PHONY: all clean fclean re header $(LIBFT)
+.PHONY: all clean fclean re header $(LIBFT) bonus
