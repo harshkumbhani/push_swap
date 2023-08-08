@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 07:49:44 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/07 14:10:08 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/08 10:11:12 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ void	sort_3(t_stack **stack)
 	top = (*stack)->a;
 	if (is_sorted((*stack)->a) == TRUE)
 		return ;
-	if (top->index > top->next->index
-		&& top->index > top->next->next->index)
+	if (top->index > top->next->index && top->index > top->prev->index)
 		do_operation(stack, RA, 0);
 	top = (*stack)->a;
-	if (top->next->index > top->index
-		&& top->next->index > top->next->next->index)
+	if (top->next->index > top->index && top->next->index > top->prev->index)
 		do_operation(stack, RRA, 0);
 	top = (*stack)->a;
 	if (top->index > top->next->index)
