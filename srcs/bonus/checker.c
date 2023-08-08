@@ -6,7 +6,7 @@
 /*   By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 11:39:49 by hkumbhan          #+#    #+#             */
-/*   Updated: 2023/08/07 14:02:39 by hkumbhan         ###   ########.fr       */
+/*   Updated: 2023/08/08 07:39:15 by hkumbhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	_check_and_execute_command(t_stack **stack, char *str)
 	else if (ft_strncmp(str, "rrr\n", 4) == 0)
 		rrr(stack);
 	else
-		write(2, "Error\n", 6);
+		exit(write(2, "Error\n", 6) * 0 + EXIT_FAILURE);
 }
 
 int	main(int argc, char **argv)

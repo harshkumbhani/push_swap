@@ -6,7 +6,7 @@
 #    By: hkumbhan <hkumbhan@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 15:13:53 by hkumbhan          #+#    #+#              #
-#    Updated: 2023/08/07 14:21:31 by hkumbhan         ###   ########.fr        #
+#    Updated: 2023/08/07 14:27:42 by hkumbhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ clean:
 	@echo
 	@printf "%b" "$(COM_COLOR)Cleaning objects and dependency files...$(NO_COLOR)"
 	@make clean -C $(LIBFT_DIR)
-	@rm -rf objs program
+	@rm -rf objs program make_output.txt
 	@echo
 
 fclean: clean
